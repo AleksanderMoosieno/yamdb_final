@@ -1,4 +1,4 @@
-# API_YaMDB
+# CI и CD проекта api_yamdb
 ***
 ### __Описание__
 ***
@@ -25,18 +25,21 @@ __API__ стремится к __RESTFUL__ и представляет собой
 
 ***
 ### Для развёртывания:
-Как запустить проект на Docker
-Запустить проект при скачанном образе api_yamdb последней версии:
+Для работы с проектом необходимо выполнить действия, описанные ниже.
 
-docker run api_yamdb
-Создать и активировать виртуальное окружение:
+git clone <project>
+cd yamdb_final/infra/
+Docker
 
-source venv/bin/activate
-После поочереди выполните команды:
-
+docker-compose up -d
 docker-compose exec web python manage.py migrate
+docker-compose exec web python manage.py collectstatic  
+yes
+docker-compose exec web python manage.py import_data  
+Y
 docker-compose exec web python manage.py createsuperuser
-docker-compose exec web python manage.py collectstatic --no-input
+...  
+> Superuser created successfully.
 
 Заполнение баз данных, выполнить локально, данные сохранятся в dump.json:
 

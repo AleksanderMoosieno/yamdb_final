@@ -12,20 +12,6 @@
 __API__ стремится к __RESTFUL__ и представляет собой проект, который собирает отзывы
 на произведения, которые в свою очередь делятся по категориям.
 ***
-#### Эндпоинты
-* /redoc/ - Документация
-* /api/v1/auth/signup/ - Создание пользователя(получение кода подтверждения)
-* /api/v1/auth/token/ - Получение токена
-* /api/v1/categories/ - Получение списка категорий 
-* /api/v1/genres/ - Получение списка жанров
-* /api/v1/titles/ - Получение списка произведений
-* /api/v1/titles/{id}/ - Подробная информация
-* /api/v1/titles/{title_id}/reviews/ - Посмотреть || Добавить отзывы
-* /api/v1/titles/{title_id}/reviews/{review_id}/comments/ - Посмотреть || Добавить комментарии к отзыву
-* /api/v1/users/me/ - Информация о вашем аккаунте
-
-***
-### Для развёртывания:
 Для работы с проектом необходимо выполнить действия, описанные ниже.
 
 git clone <project>
@@ -41,10 +27,52 @@ Y
 docker-compose exec web python manage.py createsuperuser
 ...  
 > Superuser created successfully.
+http://localhost/admin
 
-Заполнение баз данных, выполнить локально, данные сохранятся в dump.json:
+Для получения документации по API необходимо открыть в браузере адрес http://localhost/redoc/.
 
-python manage.py dumpdata > dump.json
+GET http://localhost/api/v1/titles
+GET http://localhost/api/v1/titles/1
+GET http://localhost/api/v1/titles/1/reviews
+GET http://localhost/api/v1/titles/5/reviews/6/comments
+GET http://localhost/api/v1/titles/?year=1994
+GET http://localhost/api/v1/titles/?genre=comedy
+
+POSTMAN
+Для полноценного использования API необходимо выполнить регистрацию пользователя и получить токен. Инструкция для Postman:
+
+Регистрация пользователя
+POST http://localhost/api/v1/auth/signup/
+
+{
+    "email": "tester1@mail.ru",
+    "username": "tester1"
+}
+Response status 200 OK ✅
+
+{
+    "username": "tester1",
+    "email": "tester1@mail.ru"
+}
+Docker
+
+docker-compose exec web ls sent_emails  
+> Copy your file.log <20220603-081115-140473090362512.log>
+docker-compose exec web cat sent_emails/<PASTE your file log>
+> Код подтверждения: 61b-18466437bce...
+POSTMAN
+Получение токена POST http://localhost/api/v1/auth/token/
+
+{
+    "username": "tester1",
+    "confirmation_code": "61b-18466437bce..."
+}
+Response status 200
+
+{
+    "token": "eyJ0e..........."
+}
+Authorization -> Type 'Bearer Token' -> Token -> eyJ0e
 
 ***
 ### Автор:

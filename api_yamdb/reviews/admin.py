@@ -1,78 +1,68 @@
 from django.contrib import admin
+from django.db.models import Avg
 
 from .models import Category, Comment, Genre, Review, Title, User
+
+EMPTY_VALUE = '-пусто-'
 
 
 class UserAdmin(admin.ModelAdmin):
     list_display = (
-        'pk',
-        'username',
-        'first_name',
-        'last_name',
-        'email',
-        'bio',
-        'role'
+        'id', 'username', 'bio', 'role', 'email', 'first_name', 'last_name'
     )
-    list_editable = ('role',)
-    search_fields = ('username', 'role')
-    empty_value_display = '-пусто-'
+    search_fields = ('username',)
+    list_filter = ('username', 'role')
+    empty_value_display = EMPTY_VALUE
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'slug')
+    search_fields = ('name', 'slug')
+    list_filter = ('name', 'slug')
+    empty_value_display = EMPTY_VALUE
+
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('id', 'review', 'author', 'text', 'pub_date')
+    search_fields = ('author', 'text')
+    list_filter = ('author', 'text')
+    empty_value_display = EMPTY_VALUE
+
+
+class GenreAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'slug')
+    search_fields = ('name', 'slug')
+    list_filter = ('name', 'slug')
+    empty_value_display = EMPTY_VALUE
 
 
 class ReviewAdmin(admin.ModelAdmin):
     list_display = (
-        'pk',
-        'title',
-        'text',
-        'author',
-        'score',
-        'pub_date'
+        'id', 'title', 'author', 'text', 'score', 'pub_date'
     )
-    list_editable = ('text',)
-    search_fields = ('title', 'text',)
-
-
-class CommentAdmin(admin.ModelAdmin):
-    list_display = (
-        'pk',
-        'review',
-        'text',
-        'author',
-        'pub_date'
-    )
-    list_editable = ('text',)
-    search_fields = ('review', 'text',)
-
-
-class GenreAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name', 'slug')
-
-    list_editable = ('name', 'slug')
-    search_fields = ('name', 'slug')
-
-
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name', 'slug')
-    list_editable = ('name', 'slug')
-    search_fields = ('name', 'slug')
+    search_fields = ('author', 'title', 'pub_date')
+    list_filter = ('author', 'title', 'pub_date')
+    empty_value_display = EMPTY_VALUE
 
 
 class TitleAdmin(admin.ModelAdmin):
     list_display = (
-        'pk',
-        'name',
-        'year',
-        'description',
-        'category',
+        'id', 'name', 'year', 'category', 'description', 'rating'
     )
+    search_fields = ('name', 'year', 'category', 'genre')
+    list_filter = ('name', 'year', 'category', 'genre')
+    empty_value_display = EMPTY_VALUE
+    readonly_fields = ('rating',)
 
-    list_editable = ('name', 'description', 'category', 'year')
-    search_fields = ('name', 'year', 'genre', 'category')
-    empty_value_display = '-пусто-'
+    def rating(self, instance):
+        return Review.objects.filter(title=instance).aggregate(Avg('score'))
+
+    rating.short_description = 'Рейтинг'
 
 
 admin.site.register(User, UserAdmin)
-admin.site.register(Review, ReviewAdmin)
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Genre, GenreAdmin)
-admin.site.register(Category, CategoryAdmin)
+admin.site.register(Review, ReviewAdmin)
 admin.site.register(Title, TitleAdmin)

@@ -55,7 +55,6 @@ Response status 200
     "email": "tester1@mail.ru"
 }
 
-***
 Docker
 
 docker-compose exec web ls sent_emails  

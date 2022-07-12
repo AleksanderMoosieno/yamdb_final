@@ -63,17 +63,6 @@ docker-compose exec web cat sent_emails/<PASTE your file log>
 POSTMAN
 Получение токена POST http://localhost/api/v1/auth/token/
 
-{
-    "username": "tester1",
-    "confirmation_code": "61b-18466437bce..."
-}
-Response status 200
-
-{
-    "token": "eyJ0e..........."
-}
-Authorization -> Type 'Bearer Token' -> Token -> eyJ0e
-
 ***
 ### Автор:
 Мусиенко Александр - работы - (https://github.com/AleksanderMoosieno)

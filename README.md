@@ -48,7 +48,7 @@ POST http://localhost/api/v1/auth/signup/
     "email": "tester1@mail.ru",
     "username": "tester1"
 }
-Response status 200 OK ✅
+Response status 200 
 
 {
     "username": "tester1",

@@ -5,7 +5,7 @@
 ***
 #### Технологии:
 1. [Django](https://www.djangoproject.com)
-2. [Django Rest Framework](https://www.django-rest-framework.org)
+2. [Django Rest Framework](https://www.django-rest-frvamework.org)
 3. SQlite
 4. JWT авторизация
 

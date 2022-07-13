@@ -1,7 +1,7 @@
 # CI и CD проекта api_yamdb
 ***
 ![workflow](https://github.com/AleksanderMoosieno/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
-### __Описание__
+### __Описание__x
 ***
 #### Технологии:!
 1. [Django](https://www.djangoproject.com)

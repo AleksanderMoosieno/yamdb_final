@@ -41,19 +41,6 @@ GET http://localhost/api/v1/titles/?genre=comedy
 POSTMAN
 Для полноценного использования API необходимо выполнить регистрацию пользователя и получить токен. Инструкция для Postman:
 
-Регистрация пользователя
-POST http://localhost/api/v1/auth/signup/
-
-{
-    "email": "tester1@madil.ru",
-    "username": "tester1"
-}
-Response status 200 
-
-{
-    "username": "tester1",
-    "email": "tester1@mail.ru"
-}
 
 Docker
 

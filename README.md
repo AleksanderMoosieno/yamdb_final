@@ -66,4 +66,4 @@ POSTMAN
 
 ***
 ### Автор:
-Мусиенко Александр - рабо - (https://github.com/AleksanderMoosieno)
+Мусиенко Александр -  - (https://github.com/AleksanderMoosieno)

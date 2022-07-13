@@ -3,7 +3,7 @@
 ![workflow](https://github.com/AleksanderMoosieno/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 ### __Описание__
 ***
-#### Технологии:
+#### Технологии:!
 1. [Django](https://www.djangoproject.com)
 2. [Django Rest Framework](https://www.django-rest-frvamework.org)
 3. SQlite

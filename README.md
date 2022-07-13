@@ -45,7 +45,7 @@ POSTMAN
 POST http://localhost/api/v1/auth/signup/
 
 {
-    "email": "tester1@mail.ru",
+    "email": "tester1@madil.ru",
     "username": "tester1"
 }
 Response status 200 

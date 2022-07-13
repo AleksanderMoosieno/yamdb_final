@@ -7,7 +7,7 @@
 1. [Django](https://www.djangoproject.com)
 2. [Django Rest Framework](https://www.django-rest-frvamework.org)
 3. SQlite
-4. JWT авторизацияc
+4. JWT авторизация
 
 __API__ стремится к __RESTFUL_ и представляет собой пffроект, который собир;;;ает отзывы
 на произведения, которые в свою очередь делятся по категориям.

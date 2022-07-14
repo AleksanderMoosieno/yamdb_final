@@ -29,7 +29,7 @@ docker-compose exec web python manage.py createsuperuser
 > Superuser created successfully.
 http://localhost/admin
 
-Для получения документации по API необходимо открыть в браузере адрес http://localhost/redoc/.
+Для получения документации по API необходимо открыть в браузере адрес http://localhost/redoc/
 
 GET http://localhost/api/v1/titles
 GET http://localhost/api/v1/titles/1

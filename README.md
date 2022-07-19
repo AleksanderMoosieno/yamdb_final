@@ -54,3 +54,6 @@ python manage.py dumpdata > dump.json
 http://localhost/redoc/
 
 http://localhost/api/v1/auth/token/
+
+### Cсылка на развернутый проект:
+http://62.84.120.55/api/v1/

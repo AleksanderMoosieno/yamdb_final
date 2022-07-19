@@ -48,4 +48,4 @@ python manage.py dumpdata > dump.json
 ***
 ### Автор:
 Мусиенко Александр - работы - (https://github.com/AleksanderMoosieno)
-Открываем браузер, вводим в адресную строку <ip_address_вашего_сервера>/api/v/1/
+Открываем браузер, вводим в адресную строку <ip_address_вашего_сервера>/api/v/1//
